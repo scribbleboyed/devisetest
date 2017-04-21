@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @board.name %>
+</p>
+
+<p>
+  <strong>Subdomain:</strong>
+  <%= @board.subdomain %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @board.admin %>
+</p>
+
+<p>
+  <strong>Companies:</strong>
+  <% @board.companies.each do |company| %>
+  	<p><%= company.name %></p>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>
