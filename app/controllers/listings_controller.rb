@@ -1,10 +1,11 @@
 class ListingsController < ApplicationController
+  before_action :set_board
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.where(board: @board)
   end
 
   # GET /listings/1
@@ -62,9 +63,13 @@ class ListingsController < ApplicationController
   end
 
   private
+    def set_board
+      @board = Board.find_by_subdomain!(request.subdomain)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
-      @listing = Listing.find(params[:id])
+      @listing = Listing.find_by!(id: params[:id], board: @board)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

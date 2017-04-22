@@ -1,10 +1,11 @@
 class CompaniesController < ApplicationController
+  before_action :set_board
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = @board.companies
   end
 
   # GET /companies/1
@@ -62,9 +63,12 @@ class CompaniesController < ApplicationController
   end
 
   private
+    def set_board
+      @board = Board.find_by_subdomain!(request.subdomain)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.find(params[:id])
+      @company = Company.find_by(id: params[:id], board: @board)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
