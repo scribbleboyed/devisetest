@@ -17,8 +17,8 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= company.board %></td>
-        <td><%= company.employer %></td>
+        <td><%= company.board.name %></td>
+        <td><%= company.employer.email %></td>
         <td><%= company.name %></td>
         <td><%= company.description %></td>
         <td><%= company.url %></td>

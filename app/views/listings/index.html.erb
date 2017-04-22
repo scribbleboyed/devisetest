@@ -21,9 +21,9 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.board %></td>
-        <td><%= listing.employer %></td>
-        <td><%= listing.company %></td>
+        <td><%= listing.board.name %></td>
+        <td><%= listing.employer.email %></td>
+        <td><%= listing.company.name %></td>
         <td><%= listing.job_title %></td>
         <td><%= listing.job_description %></td>
         <td><%= listing.job_location %></td>
