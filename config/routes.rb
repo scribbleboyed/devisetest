@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   devise_for :admins
 
   match '', to: 'listings#index', via: :get, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
-  root to: 'listings#index'
+  root to: 'boards#index'
 end

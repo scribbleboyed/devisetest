@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :set_board
+  layout 'board'
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
@@ -63,10 +63,6 @@ class ListingsController < ApplicationController
   end
 
   private
-    def set_board
-      @board = Board.find_by_subdomain!(request.subdomain)
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find_by!(id: params[:id], board: @board)

@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_board
+  layout 'board'
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
@@ -63,9 +63,6 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def set_board
-      @board = Board.find_by_subdomain!(request.subdomain)
-    end
     # Use callbacks to share common setup or constraints between actions.
     def set_company
       @company = Company.find_by(id: params[:id], board: @board)
