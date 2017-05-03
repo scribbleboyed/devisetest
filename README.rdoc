@@ -8,6 +8,4 @@ Directions to load app:
 4. Run `rake db:seed`
 5. Run `rails server`
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Visit 'localhost:3000' for the home page.  You can also use 'lvh.me:3000' domain instead, which will make it possible to add a subdomain to the url.  Visit 'tech.lvh.me:3000' to see the Tech job board that has been seeded.

@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   private
 
   def set_board
-    @board = Board.find_by_subdomain!(request.subdomain)
+    @board = Board.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
   end
 end
