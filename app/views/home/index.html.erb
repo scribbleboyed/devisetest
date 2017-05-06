@@ -1,2 +1,6 @@
-<p>Job Board Home Page</p>
-<p>Visit <%= link_to 'Tech Board', root_url(subdomain: 'tech') %></p>
+<h3>Available Boards</h3>
+<ol>
+<% @boards.each do |board| %>
+    <li><%= link_to "#{board.name} Board", root_url(subdomain: board.subdomain) %></li>
+<% end %>
+</ol>

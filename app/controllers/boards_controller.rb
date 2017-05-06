@@ -1,15 +1,11 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update, :destroy]
-
-  # GET /boards
-  # GET /boards.json
-  def index
-    @boards = Board.all
-  end
+  layout 'board'
+  before_action :set_board, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /boards/1
   # GET /boards/1.json
-  def show
+  def index
+
   end
 
   # GET /boards/new
@@ -51,22 +47,7 @@ class BoardsController < ApplicationController
     end
   end
 
-  # DELETE /boards/1
-  # DELETE /boards/1.json
-  def destroy
-    @board.destroy
-    respond_to do |format|
-      format.html { redirect_to boards_url, notice: 'Board was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_board
-      @board = Board.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:name, :subdomain, :admin_id)

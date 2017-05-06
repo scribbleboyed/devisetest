@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Boards</h1>
+<h1><%= @board.name %> Board</h1>
 
 <table class="table">
   <thead>
@@ -13,20 +13,12 @@
   </thead>
 
   <tbody>
-    <% @boards.each do |board| %>
       <tr>
-        <td><%= board.name %></td>
-        <td><%= board.subdomain %></td>
-        <td><%= board.admin.email %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Go to Board', listings_url(subdomain: board.subdomain) %></td>
+        <td><%= @board.name %></td>
+        <td><%= @board.subdomain %></td>
+        <td><%= @board.admin.email %></td>
+        <td><%= link_to 'Edit', edit_admin_path(@board) %></td>
+        <td><%= link_to 'Go to Board', listings_url(subdomain: @board.subdomain) %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Board', new_board_path %>
