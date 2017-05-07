@@ -10,8 +10,13 @@
 		  <li role="presentation"><%= link_to 'Companies', companies_path %></li>
 		  <li role="presentation"><%= link_to 'Listings', listings_path %></li>
 		  <li role="presentation"><%= link_to 'Post Jobs', new_listing_path %></li>
-		  <li role="presentation"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-		  <li role="presentation"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+		<% if user_signed_in? %>
+			<li role="presentation"><%= link_to 'Job Seeker Edit Profile', edit_user_registration_path %></li>
+			<li role="presentation"><%= link_to 'Job Seeker Logout', destroy_user_session_path, method: :delete %></li>
+		<% elsif employer_signed_in? %>
+		  	<li role="presentation"><%= link_to 'Employer Edit Profile', edit_employer_registration_path %></li>
+			<li role="presentation"><%= link_to 'Employer Logout', destroy_employer_session_path, method: :delete %></li>
+		<% end %>
 		</ul>
 	<% else %>
 		<ul class="nav nav-pills">
@@ -19,8 +24,14 @@
 		  <li role="presentation"><%= link_to 'Listings', listings_path %></li>
 		  <!-- Send to packages route instead? -->
 		  <li role="presentation"><%= link_to 'Post Jobs', new_listing_path %></li>
-		  <li role="presentation"><%= link_to 'Sign up', new_user_registration_path %></li>
-		  <li role="presentation"><%= link_to 'Login', new_user_session_path %></li>
+		  
+		  <li role="presentation"><%= link_to 'Employer Sign up', new_employer_registration_path %></li>
+		  <li role="presentation"><%= link_to 'Employer Login', new_employer_session_path %></li>
+
+		  <li role="presentation"><%= link_to 'Job Seeker Sign up', new_user_registration_path %></li>
+		  <li role="presentation"><%= link_to 'Job Seeker Login', new_user_session_path %></li>
+		
+
 		</ul>
 	<% end %>
 </div>
