@@ -1,5 +1,4 @@
 class BoardsController < ApplicationController
-  layout 'board'
   before_action :set_board, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /boards/1

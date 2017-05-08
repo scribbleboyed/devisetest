@@ -1,43 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @board.name %> Listings</h1>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Board</th>
-      <th>Employer</th>
-      <th>Company</th>
-      <th>Job title</th>
-      <th>Job description</th>
-      <th>Job location</th>
-      <th>Job type</th>
-      <th>Job url</th>
-      <th>Contact email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.board.name %></td>
-        <td><%= listing.employer.email %></td>
-        <td><%= listing.company.name %></td>
-        <td><%= listing.job_title %></td>
-        <td><%= listing.job_description %></td>
-        <td><%= listing.job_location %></td>
-        <td><%= listing.job_type %></td>
-        <td><%= listing.job_url %></td>
-        <td><%= listing.contact_email %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="panel panel-default">
+  <% @listings.each do |listing| %>
+    <%= render 'listing', listing: listing %>
+  <% end %>
+</div>
 
 <br>
 

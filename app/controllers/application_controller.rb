@@ -4,8 +4,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_board
+  layout :layout_by_resource
 
   private
+
+  def layout_by_resource
+    if devise_controller?
+      "board"
+    else
+      "application"
+    end
+  end
 
   def set_board
     @board = Board.find_by_subdomain!(request.subdomain) unless request.subdomain.empty?
