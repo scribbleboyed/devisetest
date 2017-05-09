@@ -5,7 +5,7 @@
 </div>
 <div class="container">
 	<% if admin_signed_in? %>
-		<p>Logged in as <strong><%= current_admin.email %></strong></p>
+		<!-- <p>Logged in as <strong><%= current_admin.email %></strong></p> -->
 		<ul class="nav nav-pills">
 		  <li role="presentation"><%= link_to 'Edit Profile', edit_admin_registration_path %></li>
 		  <li role="presentation"><%= link_to 'Logout', destroy_admin_session_path, method: :delete %></li>
