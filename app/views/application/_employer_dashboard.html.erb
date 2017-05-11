@@ -35,28 +35,6 @@
 	      </nav>
 	    </div>
 	    <div class="col-sm-9 col-lg-10">
-			<div class="jumbotron">
-			  <div class="container">
-			  	<h1>JB Home</h1>
-			  </div>
-			</div>
-			<div class="container">
-				<% if admin_signed_in? %>
-					<!-- <p>Logged in as <strong><%= current_admin.email %></strong></p> -->
-					<ul class="nav nav-pills">
-					  <li role="presentation"><%= link_to 'Edit Profile', edit_admin_registration_path %></li>
-					  <li role="presentation"><%= link_to 'Logout', destroy_admin_session_path, method: :delete %></li>
-					</ul>
-				<% else %>
-					<ul class="nav nav-pills">
-					  <li role="presentation"><%= link_to 'Sign up', new_admin_registration_path %></li>
-					  <li role="presentation"><%= link_to 'Login', new_admin_session_path %></li>
-					</ul>
-				<% end %>
-		    </div>
 		    <div class="container">
-		    	<%= yield %>
-		    </div>
-		</div>
-	</div>
-</div>
+		    	
+		   
