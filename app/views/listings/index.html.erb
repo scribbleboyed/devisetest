@@ -1,3 +1,9 @@
+<div class="jumbotron">
+  <div class="container">
+  	<h3><%= @board.name %> Jobs</h3>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <div class="panel panel-default">
@@ -7,5 +13,8 @@
 </div>
 
 <br>
+<div class="jobs-pagination col-sm-12">
+		<%= will_paginate @jobs %>
+</div>
 
 <%= link_to 'New Listing', new_listing_path %>
