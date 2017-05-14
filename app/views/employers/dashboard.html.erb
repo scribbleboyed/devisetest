@@ -1,0 +1,11 @@
+<%= render partial: 'employer_dashboard' %>
+
+<% @posts.each do |post| %>
+	<%= link_to post_path(post) do %>
+		<div class="post-container--wrapper col-sm-12">
+			<div class="post-container--logo col-sm-12 col-md-2">
+				<h1><%= post.title %></h1>
+			</div>
+		</div>
+	<% end %>
+<% end %>
