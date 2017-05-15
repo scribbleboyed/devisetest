@@ -5,4 +5,8 @@ class EmployersController < ApplicationController
     def dashboard
     	@posts = current_employer.listings
     end
+
+    def profile
+    	@posts = current_employer
+    end
 end

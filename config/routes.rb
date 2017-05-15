@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   get '/employers/dashboard', to: 'employers#dashboard', as: 'employer_dashboard'
+  get '/employers/profile', to: 'employers#profile', as: 'employer_profile'
 end
