@@ -15,3 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= required jquery.geocomplete
+$(function() {
+  $('#geo-input').geocomplete();
+});

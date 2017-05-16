@@ -7,12 +7,12 @@
 
 <p>
   <strong>Employer:</strong>
-  <%= @listing.employer.email %>
+  <%= @listing.employer.try(:email) %>
 </p>
 
 <p>
   <strong>Company:</strong>
-  <%= @listing.company.name %>
+  <%= @listing.company.try(:name) %>
 </p>
 
 <p>
