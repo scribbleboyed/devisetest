@@ -5,8 +5,10 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+
     @search = Listing.search(params[:q])
     @listings = @search.result.paginate(page: params[:page], per_page: 25).where(board: @board)
+
   end
 
   # GET /listings/1
