@@ -3,7 +3,7 @@ class EmployersController < ApplicationController
 	before_action :authenticate_employer!
 
     def dashboard
-    	@posts = current_employer.listings
+    	@listings = current_employer.listings
     end
 
     def profile

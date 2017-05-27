@@ -1,7 +1,7 @@
 class Employers::RegistrationsController < Devise::RegistrationsController
 
 	def after_sign_up_path_for(resource)
-		edit_employer_registration_path
+		employer_profile_path
   	end
 
 	private

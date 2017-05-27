@@ -4,6 +4,6 @@ class Employer < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :companies
+  belongs_to :company
   has_many :listings
 end
