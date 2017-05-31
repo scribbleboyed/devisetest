@@ -6,7 +6,22 @@ class EmployersController < ApplicationController
     	@listings = current_employer.listings
     end
 
-    def profile
-    	@posts = current_employer
+    def listings
+    	@listings = current_employer.listings
     end
+
+    def profile
+    	@employer = current_employer
+    end
+
+    private
+
+		def update_resource(resource, params)
+			resource.update_without_password(params)
+			# redirect_to new_post_path - need to fix
+		end
+
+	  	def registration_params
+	  		params.require(:employer).permit(:email, :password, :password_confirmation)
+		end
 end
