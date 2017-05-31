@@ -5,10 +5,18 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-
     @search = Listing.search(params[:q])
-    @listings = @search.result.paginate(page: params[:page], per_page: 25).where(board: @board)
 
+    @listings = Listing.all
+    if params[:q].present?
+      @listings = @search.result.where(board: @board)
+    end
+
+    if params[:location].present?
+      @listings = @listings.near(params[:location]).where(board: @board)
+    end
+
+    @listings = @listings.paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /listings/1
@@ -28,10 +36,10 @@ class ListingsController < ApplicationController
 
   # POST /listings
   # POST /listings.json
-  def create
-    # @listing = Listing.new(listing_params)
+  def creates
     @listing = current_employer.listings.build(listing_params)
-
+    @listing.board_id = @board.id
+    
     respond_to do |format|
       if @listing.save
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }

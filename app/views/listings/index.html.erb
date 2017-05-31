@@ -10,6 +10,8 @@
   <div class="field well">
     <%= f.label :job_title_or_job_description_cont, "Keywords: " %>
     <%= f.text_field :job_title_or_job_description_cont %>
+    <%= label_tag :location %>
+    <%= text_field_tag :location, params[:near] %>
     <%= f.submit "Search" %>
   </div>
 <% end %>
@@ -21,8 +23,8 @@
 </div>
 
 <br>
-<div class="jobs-pagination col-sm-12">
-		<%= will_paginate @jobs %>
+<div class="listings-pagination col-sm-12">
+		<%= will_paginate @listings %>
 </div>
 
 <%= link_to 'New Listing', new_listing_path %>
