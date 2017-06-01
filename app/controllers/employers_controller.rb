@@ -12,6 +12,7 @@ class EmployersController < ApplicationController
 
     def profile
     	@employer = current_employer
+        @company = @employer.company || @employer.company.build
     end
 
     private

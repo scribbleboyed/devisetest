@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   layout 'board'
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_employer!, only: [:new, :create]
 
   # GET /listings
   # GET /listings.json
@@ -36,7 +37,8 @@ class ListingsController < ApplicationController
 
   # POST /listings
   # POST /listings.json
-  def creates
+  def create
+    # @listing = Listing.new(listing_params)
     @listing = current_employer.listings.build(listing_params)
     @listing.board_id = @board.id
     
