@@ -1,30 +1,72 @@
-<div class="jumbotron">
-  <div class="container">
-  	<h3><%= @board.name %> Jobs</h3>
-  </div>
-</div>
-
 <p id="notice"><%= notice %></p>
 
-<%= search_form_for @search do |f| %>
-  <div class="field well">
-    <%= f.label :job_title_or_job_description_cont, "Keywords: " %>
-    <%= f.text_field :job_title_or_job_description_cont %>
-    <%= label_tag :location %>
-    <%= text_field_tag :location, params[:near] %>
-    <%= f.submit "Search" %>
+<%= search_form_for @search, class: 'form-group' do |f| %>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <%= f.label :job_title_or_job_description_cont, "Keywords: " %>
+          <%= f.text_field :job_title_or_job_description_cont, class: 'form-control' %>
+        </div>
+      </div>
+    <div class="col-md-5">
+        <div class="form-group">
+          <%= label_tag :location %>
+          <%= text_field_tag :location, params[:near], class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <%= f.submit "Search", class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+    <% if params[:q] %>
+      <% if params[:q][:job_title_or_job_description_cont] && params[:q][:job_title_or_job_description_cont].present? %>
+        Current filter: <strong><%= params[:q][:job_title_or_job_description_cont] %></strong><br/>
+      <% end %>
+      <% if params[:q][:company_id_eq] && params[:q][:company_id_eq].present? %>
+        Current Company: <strong><%= Company.find(params[:q][:company_id_eq]).name %></strong><br/>
+      <% end %>
+    <% end %>
+    <% if params[:location].present? %>
+      Current location: <strong><%= params[:location] %></strong>
+    <% end %>
   </div>
 <% end %>
 
-<div class="panel panel-default">
-  <% @listings.each do |listing| %>
-    <%= render 'listing', listing: listing %>
-  <% end %>
-</div>
+<div class="row">
 
-<br>
-<div class="listings-pagination col-sm-12">
-		<%= will_paginate @listings %>
-</div>
+  <div class="col-md-8">
+    <div class="list-group">
+      <% @listings.each do |listing| %>
+        <%= render 'listing', listing: listing %>
+      <% end %>
+    </div>
 
-<%= link_to 'New Listing', new_listing_path %>
+    <ul class="pagination">
+    	<li><%= will_paginate @listings %></li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4><%= @board.name %> Job Board</h4>
+        <h6>The Best Job Board</h6>
+        <p>Where you go to see more jobs</p>
+      </div>
+    </div>
+
+<div class="list-group">
+  <h6 href="#" class="list-group-item active">
+    <strong>Filter by Company</strong>
+  </h6>
+  <ul class="list-group">
+    <% @listings.each do |listing| %>
+      <% if listing.company.present? %>
+        <%= link_to listing.company.name, request.query_parameters.merge({q: {company_id_eq: listing.company.id}}), class: "list-group-item" %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+  </div>
+
+</div>

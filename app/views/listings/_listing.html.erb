@@ -1,14 +1,8 @@
-<div class="panel-body row">
-  <div class="col-md-4">
-    <p><b><%= link_to listing.job_title, listing_path(listing) %></b><br/>
-    <% if listing.company %>
-      <%= link_to listing.company.name, company_path(listing.company) %></p>
-    <% end %>
+<%= link_to listing_path(listing), class: 'list-group-item' do %>
+  <h5 class="list-group-item-heading"><b><%= listing.job_title %></b></h5>
+  <div class="row">
+    <div class="col-md-5"><p class="list-group-item-text"><%= listing.company.try(:name) || "Unknown Company" %></p></div>
+    <div class="col-md-5"><p><%= listing.job_location %></p></div>
+    <div class="col-md-2"><p><%= listing.created_at.strftime("%B %d") %></p></div>
   </div>
-  <div class="col-md-4">
-    <%= listing.job_location %>
-  </div>
-  <div class="col-md-4">
-    <%= listing.created_at.strftime("%B %d") %>
-  </div>
-</div>
+<% end %>

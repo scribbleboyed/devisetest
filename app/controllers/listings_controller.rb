@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
   def index
     @search = Listing.search(params[:q])
 
-    @listings = Listing.all
+    @listings = Listing.all.where(board: @board)
     if params[:q].present?
       @listings = @search.result.where(board: @board)
     end
@@ -81,6 +81,9 @@ class ListingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find_by!(id: params[:id], board: @board)
+    rescue
+      flash[:alert] = "Listing could not be found"
+      redirect_to root_path
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

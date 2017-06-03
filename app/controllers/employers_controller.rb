@@ -12,7 +12,7 @@ class EmployersController < ApplicationController
 
     def profile
     	@employer = current_employer
-        @company = @employer.company || @employer.company.build
+        @company = @employer.company || Company.new(employer_id: @employer.id)
     end
 
     private

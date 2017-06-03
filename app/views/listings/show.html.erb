@@ -1,49 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Board:</strong>
-  <%= @listing.board.name %>
-</p>
+<div class="btn-group">
+  <%= link_to 'Back', listings_path, class: 'btn btn-warning' %>
+  <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-primary' %>
+</div>
+<p/>
 
-<p>
-  <strong>Employer:</strong>
-  <%= @listing.employer.try(:email) %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h4><strong><%= @listing.job_title %></strong> <%= "@ #{@listing.company.name}" if @listing.company %></h4></div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Company</strong></div>
+    <div class="col-md-10"><%= @listing.company.try(:name) %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Job Description</strong></div>
+    <div class="col-md-10"><%= @listing.job_description %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Job Location</strong></div>
+    <div class="col-md-10"><%= @listing.job_location %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Job Type</strong></div>
+    <div class="col-md-10"><%= @listing.job_type %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Job URL</strong></div>
+    <div class="col-md-10"><%= @listing.job_url %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Contact Email</strong></div>
+    <div class="col-md-10"><%= @listing.contact_email %></div>
+  </div>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @listing.company.try(:name) %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><strong>Employer</strong></div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Contact Email</strong></div>
+    <div class="col-md-10"><%= @listing.employer.try(:email) %></div>
+  </div>
+</div>
 
-<p>
-  <strong>Job title:</strong>
-  <%= @listing.job_title %>
-</p>
-
-<p>
-  <strong>Job description:</strong>
-  <%= @listing.job_description %>
-</p>
-
-<p>
-  <strong>Job location:</strong>
-  <%= @listing.job_location %>
-</p>
-
-<p>
-  <strong>Job type:</strong>
-  <%= @listing.job_type %>
-</p>
-
-<p>
-  <strong>Job url:</strong>
-  <%= @listing.job_url %>
-</p>
-
-<p>
-  <strong>Contact email:</strong>
-  <%= @listing.contact_email %>
-</p>
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<div class="panel panel-default">
+<div class="panel-heading"><strong>Company</strong></div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Name</strong></div>
+    <div class="col-md-10"><%= @listing.company.try(:name) %></div>
+  </div>
+</div>
