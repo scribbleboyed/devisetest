@@ -22,7 +22,7 @@ user2.save!
 
 puts "Creating Employers"
 10.times do |i|
-	employer = Employer.where(email: "employer#{i}@jobboard.com").first_or_create
+	employer = Employer.where(email: "employer#{i}@jobboard.com", board_id: '1').first_or_create
 	employer.password = 'password'
 	employer.save!
 end
