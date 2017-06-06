@@ -17,18 +17,6 @@ class EmployersController < ApplicationController
         # Company.update_all(employer_id: @employer.id)
     end
 
-    def update_profile
-        respond_to do |format|
-            if @company.update(company_params)
-                format.html { redirect_to :employer_profile_path, notice: 'Company was successfully updated.' }
-                format.json { redirect_to :employer_profile_path, status: :ok, location: @company }
-            else
-                format.html { render :edit }
-                format.json { render json: @company.errors, status: :unprocessable_entity }
-            end
-        end
-    end
-
     private
 
 		def update_resource(resource, params)
