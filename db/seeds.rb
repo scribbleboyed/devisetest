@@ -22,17 +22,18 @@ user2.save!
 
 puts "Creating Employers"
 10.times do |i|
-	employer = Employer.where(email: "employer#{i}@jobboard.com").first_or_create
+	employer = Employer.where(email: "employer#{i}@jobboard.com", board_id: '1').first_or_create
 	employer.password = 'password'
 	employer.save!
 end
 
-Employer.first(5).each do |employer|
-	Company.create(board: board1, employer: employer, name: Faker::Company.name, description: Faker::Company.catch_phrase, url: Faker::Internet.url)
+puts "Creating Companies"
+Employer.first(5).each do |p|
+	Company.create(board: board1, employer_id: p.id, name: Faker::Company.name, description: Faker::Company.catch_phrase, url: Faker::Internet.url)
 end
 
-Employer.last(5).each do |employer|
-	Company.create(board: board2, employer: employer, name: Faker::Company.name, description: Faker::Company.catch_phrase, url: Faker::Internet.url)
+Employer.last(5).each do |p|
+	Company.create(board: board2, employer_id: p.id, name: Faker::Company.name, description: Faker::Company.catch_phrase, url: Faker::Internet.url)
 end
 
 puts "Creating Listings"
@@ -40,7 +41,7 @@ puts "Creating Listings"
 	random_company = Company.find(rand(5)+1)
 	Listing.create({
 		board: random_company.board, 
-		employer: random_company.employer, 
+		employer_id: random_company.employer_id, 
 		company: random_company, 
 		job_title: Faker::Job.title, 
 		job_description: Faker::Lorem.paragraph,
@@ -54,7 +55,7 @@ end
 	random_company = Company.find(rand(5)+6)
 	Listing.create({
 		board: random_company.board, 
-		employer: random_company.employer, 
+		employer_id: random_company.employer_id, 
 		company: random_company,  
 		job_title: Faker::Job.title, 
 		job_description: Faker::Lorem.paragraph,

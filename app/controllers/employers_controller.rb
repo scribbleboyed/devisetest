@@ -1,6 +1,6 @@
 class EmployersController < ApplicationController
 	layout 'board'
-	before_action :authenticate_employer!
+	before_action :authenticate_employer!, :set_company
 
     def dashboard
     	@listings = current_employer.listings
@@ -12,7 +12,9 @@ class EmployersController < ApplicationController
 
     def profile
     	@employer = current_employer
-        @company = @employer.company || Company.new(employer_id: @employer.id)
+        # @company = @employer.company
+        @company = @employer.company || Company.find(current_employer.id)
+        # Company.update_all(employer_id: @employer.id)
     end
 
     private
@@ -25,4 +27,12 @@ class EmployersController < ApplicationController
 	  	def registration_params
 	  		params.require(:employer).permit(:email, :password, :password_confirmation)
 		end
+
+        def set_company
+            @company = current_employer.company
+        end
+
+        def company_params
+            # params.require(:company).permit(:board_id, :employer_id, :name, :description, :url)
+        end
 end

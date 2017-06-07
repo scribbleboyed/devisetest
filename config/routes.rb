@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/employers/dashboard', to: 'employers#dashboard', as: 'employer_dashboard'
   get '/employers/listings', to: 'employers#listings', as: 'employer_listings'
   get '/employers/profile', to: 'employers#profile', as: 'employer_profile'
+  put '/employers/profile', to: 'employers#update_profile', as: 'employer_update_profile'
 end
