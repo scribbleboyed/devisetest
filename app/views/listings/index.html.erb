@@ -55,18 +55,18 @@
       </div>
     </div>
 
-<div class="list-group">
-  <h6 href="#" class="list-group-item active">
-    <strong>Filter by Company</strong>
-  </h6>
-  <ul class="list-group">
-    <% @listings.each do |listing| %>
-      <% if listing.company.present? %>
-        <%= link_to listing.company.name, request.query_parameters.merge({q: {company_id_eq: listing.company.id}}), class: "list-group-item" %>
-      <% end %>
-    <% end %>
-  </ul>
-</div>
+    <div class="list-group">
+      <h6 href="#" class="list-group-item active">
+        <strong>Filter by Company</strong>
+      </h6>
+      <ul class="list-group">
+        <% @listings.each do |listing| %>
+          <% if listing.company.present? %>
+            <%= link_to listing.company.name, request.query_parameters.merge({q: {company_id_eq: listing.company.id}}), class: "list-group-item" %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
 </div>
