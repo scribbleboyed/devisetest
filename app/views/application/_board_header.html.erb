@@ -25,7 +25,7 @@
 		    </a>
 			<ul class="dropdown-menu">
 		    	<% if employer_signed_in? %>
-					<li role="presentation"><%= link_to 'Edit Profile', edit_employer_registration_path, role: 'menuitem', tabindex: '-1'%></li>
+					<li role="presentation"><%= link_to 'Edit Profile', employer_profile_path, role: 'menuitem', tabindex: '-1'%></li>
 					<li role="presentation"><%= link_to 'Log Out', destroy_employer_session_path, method: :delete, role: 'menuitem', tabindex: '-1'%></li>
 				<% else %>
 			      	<li role="presentation"><%= link_to 'Sign Up', new_employer_registration_path, role: 'menuitem', tabindex: '-1'%></li>

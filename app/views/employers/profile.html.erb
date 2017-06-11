@@ -15,14 +15,14 @@
                 </div>
               <% end %>
 
-              <div class="field">
+<!--               <div class="field">
                 <%= f.label :board_id %><br>
                 <%= f.text_field :board_id, class: 'form-control' %>
               </div>
               <div class="field">
                 <%= f.label :employer_id %><br>
                 <%= f.text_field :employer_id, class: 'form-control' %>
-              </div>
+              </div> -->
               <div class="field">
                 <%= f.label :name %><br>
                 <%= f.text_field :name, class: 'form-control' %>
@@ -34,6 +34,14 @@
               <div class="field">
                 <%= f.label :url %><br>
                 <%= f.text_field :url, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <% if f.object.image.present? %>
+                  <%= image_tag f.object.image_url %>
+                <% end %>
+                <%= f.label :image %><br>
+                <%= f.hidden_field :image, value: f.object.cached_image_data %>
+                <%= f.file_field :image %>
               </div>
               <div class="actions">
                 <%= f.submit %>
