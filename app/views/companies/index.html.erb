@@ -10,6 +10,7 @@
       <th>Name</th>
       <th>Description</th>
       <th>Url</th>
+      <th>Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= company.name %></td>
         <td><%= company.description %></td>
         <td><%= company.url %></td>
+        <td><%= company.image %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
