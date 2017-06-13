@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Board Home</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="btn-group btn-group-justified">
+        <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class: 'btn btn-default' %>
+        <%= link_to 'View Dashboard', root_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="list-group">
+        <h6 class="list-group-item">
+          <strong><%= @board.name %> Dashboard</strong>
+        </h6>
+        <ul class="list-group">
+          <%= link_to 'Dashboard', admin_path, class: "list-group-item" %>
+          <%= link_to 'Listings', admin_listings_path, class: "list-group-item" %>
+          <%= link_to 'Companies', admin_companies_path, class: "list-group-item" %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <%= yield %>
+    </div>
+  </div>
+</div>

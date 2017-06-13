@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<% if current_admin == @board.admin %>
+  <div class="btn-group btn-group-justified">
+    <%= link_to '', root_path, class: 'btn' %>
+    <%= link_to '', root_path, class: 'btn' %>
+    <%= link_to '', root_path, class: 'btn' %>
+    <%= link_to '', root_path, class: 'btn' %>
+    <%= link_to '', root_path, class: 'btn' %>
+    <%= link_to '', root_path, class: 'btn' %>
+    <%= link_to '', root_path, class: 'btn' %>
+        <%= link_to 'Go to Admin Dashboard', admin_path, class: 'btn btn-info' %>
+    <%= link_to 'Log Out Administrator', destroy_admin_session_path, method: :delete, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
 <%= render partial: 'board_header' %>
 
 <div class="container">

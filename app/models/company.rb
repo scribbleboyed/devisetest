@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
   belongs_to :board
-  has_many :employers
+  belongs_to :employer
   has_many :listings
 end

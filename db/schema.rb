@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515011521) do
+ActiveRecord::Schema.define(version: 20170607050839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20170515011521) do
 
   add_index "companies", ["board_id"], name: "index_companies_on_board_id", using: :btree
   add_index "companies", ["employer_id"], name: "index_companies_on_employer_id", using: :btree
+
+  create_table "credits", force: :cascade do |t|
+    t.integer  "employer_id"
+    t.integer  "listing_id"
+    t.datetime "claimed_on"
+  end
+
+  add_index "credits", ["employer_id"], name: "index_credits_on_employer_id", using: :btree
+  add_index "credits", ["listing_id"], name: "index_credits_on_listing_id", using: :btree
 
   create_table "employers", force: :cascade do |t|
     t.string   "email"
@@ -118,6 +127,8 @@ ActiveRecord::Schema.define(version: 20170515011521) do
   add_foreign_key "boards", "admins"
   add_foreign_key "companies", "boards"
   add_foreign_key "companies", "employers"
+  add_foreign_key "credits", "employers"
+  add_foreign_key "credits", "listings"
   add_foreign_key "listings", "boards"
   add_foreign_key "listings", "companies"
   add_foreign_key "listings", "employers"

@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Board:</strong>
-  <%= @company.board.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><h4><strong><%= @company.name %></strong></h4></div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Company Description</strong></div>
+    <div class="col-md-10"><%= @company.description %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>URL</strong></div>
+    <div class="col-md-10"><%= @company.url %></div>
+  </div>
+  <div class="panel-body row">
+    <div class="col-md-2"><strong>Company Email</strong></div>
+    <div class="col-md-10"><%= @company.employer.try(:email) %></div>
+  </div>
+</div>
 
-<p>
-  <strong>Employer:</strong>
-  <%= @company.employer.email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @company.description %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @company.url %>
-</p>
+<div class="list-group">
+  <h5 href="#" class="list-group-item">
+    <strong>Company Job Listings</strong>
+  </h5>
+  <ul class="list-group">
+    <% @company.listings.each do |listing| %>
+      <% if listing.company.present? %>
+        <%= link_to listing.job_title, listing_path(listing), class: "list-group-item" %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
